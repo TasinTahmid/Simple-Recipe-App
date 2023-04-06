@@ -2,12 +2,21 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const userRouter = require('./routes/users.routes');
+
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://mt_tahmid:Sadat1234@recipes.ipxnhq1.mongodb.net/recipes?retryWrites=true&w=majority");
+app.use('/auth', userRouter);
+
+mongoose.connect("mongodb+srv://mt_tahmid:Sadat1234@recipes.ipxnhq1.mongodb.net/recipes?retryWrites=true&w=majority",
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}
+);
 
 app.get('/', (req, res) => {
   res.send('Server is running properly...');
