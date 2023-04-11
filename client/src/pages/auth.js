@@ -29,12 +29,12 @@ const Login = () => {
         password,
       });
 
-      console.log('this is response:\n', response);
+      // console.log('this is response:\n', response);
 
       setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.token);
 
-      // navigate('/');
+      navigate('/');
 
       alert('Login successfull.');
 
