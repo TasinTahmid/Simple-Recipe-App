@@ -29,12 +29,13 @@ const Login = () => {
         password,
       });
 
+      console.log('this is response:\n', response);
+
       setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.token);
 
-      navigate('/');
+      // navigate('/');
 
-      console.log('this is response:\n',response);
       alert('Login successfull.');
 
     } catch (err) {
@@ -60,11 +61,11 @@ const Register = () => {
     event.preventDefault() ;
 
     try {
-      await axios.post('http://localhost:5000/auth/register',{
+      const response = await axios.post('http://localhost:5000/auth/register',{
         username,
         password,
       });
-
+      console.log(response);
       alert('Registration successfull.');
 
     } catch (err) {
