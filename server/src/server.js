@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const userRouter = require('./routes/users.routes');
+const recipesRouter = require('./routes/recipes.routes');
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/auth', userRouter);
+app.use('/recipes', recipesRouter);
 
 mongoose.connect("mongodb+srv://mt_tahmid:Sadat1234@recipes.ipxnhq1.mongodb.net/recipes?retryWrites=true&w=majority",
 {
